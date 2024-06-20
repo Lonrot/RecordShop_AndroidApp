@@ -35,4 +35,70 @@ public class Album {
         this.albumPrice = price;
         this.albumStock = stockQuantity;
     }
+
+    public Long getAlbumID() {
+        return albumID;
+    }
+
+    public void setAlbumID(Long albumID) {
+        this.albumID = albumID;
+    }
+
+    public String getAlbumName() {
+        return albumName;
+    }
+
+    public void setAlbumName(String albumName) {
+        this.albumName = albumName;
+    }
+
+    public String getAlbumArtist() {
+        return albumArtist;
+    }
+
+    public void setAlbumArtist(String albumArtist) {
+        this.albumArtist = albumArtist;
+    }
+
+    public String getAlbumReleaseYear() {
+        return albumReleaseYear;
+    }
+
+    public void setAlbumReleaseYear(String albumReleaseYear) {
+        this.albumReleaseYear = albumReleaseYear;
+    }
+
+    public String getAlbumGenre() {
+        return albumGenre;
+    }
+
+    public void setAlbumGenre(String albumGenre) {
+        this.albumGenre = albumGenre;
+    }
+
+    public String getAlbumLabel() {
+        return albumLabel;
+    }
+
+    public void setAlbumLabel(String albumLabel) {
+        this.albumLabel = albumLabel;
+    }
+
+    public double getAlbumPrice() {
+        return albumPrice;
+    }
+
+    public void setAlbumPrice(double albumPrice) {
+        this.albumPrice = albumPrice;
+    }
+
+    public int getAlbumStock() {
+        return albumStock;
+    }
+
+    public void setAlbumStock(int albumStock) {
+        this.albumStock = albumStock;
+    }
+
+
 }
