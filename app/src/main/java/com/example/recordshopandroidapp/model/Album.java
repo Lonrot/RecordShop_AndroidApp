@@ -1,6 +1,7 @@
 package com.example.recordshopandroidapp.model;
 
 
+import androidx.databinding.Bindable;
 import com.google.gson.annotations.SerializedName;
 
 public class Album {
@@ -35,7 +36,7 @@ public class Album {
         this.albumPrice = price;
         this.albumStock = stockQuantity;
     }
-
+    @Bindable
     public Long getAlbumID() {
         return albumID;
     }
@@ -43,7 +44,7 @@ public class Album {
     public void setAlbumID(Long albumID) {
         this.albumID = albumID;
     }
-
+    @Bindable
     public String getAlbumName() {
         return albumName;
     }
@@ -51,7 +52,7 @@ public class Album {
     public void setAlbumName(String albumName) {
         this.albumName = albumName;
     }
-
+    @Bindable
     public String getAlbumArtist() {
         return albumArtist;
     }
@@ -83,7 +84,7 @@ public class Album {
     public void setAlbumLabel(String albumLabel) {
         this.albumLabel = albumLabel;
     }
-
+    @Bindable
     public double getAlbumPrice() {
         return albumPrice;
     }
