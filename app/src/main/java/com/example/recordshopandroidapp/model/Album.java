@@ -1,10 +1,10 @@
 package com.example.recordshopandroidapp.model;
 
-
+import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
 import com.google.gson.annotations.SerializedName;
 
-public class Album {
+public class Album extends BaseObservable {
 
     @SerializedName("id")
     private Long albumID;
