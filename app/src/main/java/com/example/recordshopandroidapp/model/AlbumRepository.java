@@ -1,6 +1,7 @@
 package com.example.recordshopandroidapp.model;
 
 import android.app.Application;
+import android.util.Log;
 import androidx.lifecycle.MutableLiveData;
 import com.example.recordshopandroidapp.service.AlbumAPIService;
 import com.example.recordshopandroidapp.service.RetrofitInstance;
@@ -26,16 +27,17 @@ public class AlbumRepository {
         Call<List<Album>> call = APIservice.getAlbums();
 
         call.enqueue(new Callback<List<Album>>() {
+
             @Override
             public void onResponse(Call<List<Album>> call, Response<List<Album>> response) {
-
                     List<Album> albums = response.body();
                     albumsMutableLiveData.setValue(albums);
+                    Log.i("AlbumRepository", "onResponse: " + albums);
             }
 
             @Override
             public void onFailure(Call<List<Album>> call, Throwable throwable) {
-
+                Log.i("AlbumRepository", "onFailure: " + throwable.getMessage());
             }
         });
         return this.albumsMutableLiveData;
