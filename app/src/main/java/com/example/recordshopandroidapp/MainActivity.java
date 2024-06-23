@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.recordshopandroidapp.databinding.ActivityMainBinding;
 import com.example.recordshopandroidapp.model.Album;
+import com.example.recordshopandroidapp.ui.mainactivity.MainActivityClickHandler;
 import com.example.recordshopandroidapp.ui.mainactivity.MainActivityViewModel;
 
 import java.util.ArrayList;
@@ -32,6 +33,9 @@ public class MainActivity extends AppCompatActivity {
         mainActivityViewModel = new ViewModelProvider(this).get(MainActivityViewModel.class);
         // Initialize the album list
         albums = new ArrayList<>();
+
+        MainActivityClickHandler handlers = new MainActivityClickHandler(this);
+        binding.setClickHandlers(handlers);
         // Call method to get all albums
         getAllAlbums();
 
