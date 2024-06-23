@@ -33,7 +33,7 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.AlbumViewHol
         Album album = albumList.get(position);
 
         // Bind data to the ViewHolder
-        holder.imageView.setImageResource(R.drawable.ic_launcher_background);
+        holder.imageView.setImageResource(R.drawable.placeholder_album);
         holder.albumNameView.setText(album.getAlbumName());
         holder.artistNameView.setText(album.getAlbumArtist());
         holder.albumPriceView.setText(String.valueOf(album.getAlbumPrice()));
@@ -53,9 +53,9 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.AlbumViewHol
         public AlbumViewHolder(@NotNull View albumView) {
             super(albumView);
             this.imageView = albumView.findViewById(R.id.albumImageView);
-            this.albumNameView = albumView.findViewById(R.id.albumNameTextView);
-            this.artistNameView = albumView.findViewById(R.id.artistAlbumView);
-            this.albumPriceView = albumView.findViewById(R.id.albumTextViewPrice);
+            this.albumNameView = albumView.findViewById(R.id.albumTitleView);
+            this.artistNameView = albumView.findViewById(R.id.albumArtistView);
+            this.albumPriceView = albumView.findViewById(R.id.albumPriceView);
         }
     }
 }
