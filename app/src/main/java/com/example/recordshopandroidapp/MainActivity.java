@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.recordshopandroidapp.databinding.ActivityMainBinding;
@@ -61,7 +62,8 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(albumAdapter);
 
         // Create and set a new LinearLayoutManager
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+            recyclerView.setLayoutManager(new GridLayoutManager(this,2));
+        //recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         // Set RecyclerView's setHasFixedSize to true
         recyclerView.setHasFixedSize(true);
