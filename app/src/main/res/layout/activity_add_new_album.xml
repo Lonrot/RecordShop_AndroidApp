@@ -4,6 +4,7 @@
     <data>
         <variable name="album" type="com.example.recordshopandroidapp.model.Album"/>
         <import type="com.example.recordshopandroidapp.model.Converter"/>
+        <variable name="clickHandlers" type="com.example.recordshopandroidapp.ui.addalbum.AddAlbumClickHandlers"/>
     </data>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -176,7 +177,10 @@
                         android:id="@+id/btn_save"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+
                         android:text="Save"
+                        android:onClick="@{clickHandlers::onAddAlbumClick}"
+
                         android:layout_marginStart="8dp"/>
 
             </LinearLayout>
