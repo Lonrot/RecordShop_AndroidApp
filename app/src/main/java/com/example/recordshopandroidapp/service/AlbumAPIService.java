@@ -11,9 +11,9 @@ import java.util.List;
 
 public interface AlbumAPIService {
 
-    @GET("/album")
+    @GET("album")
     Call<List<Album>> getAlbums();
-    @POST("/add")
+    @POST("add")
     Call<Album> addAlbum(@Body Album album);
 
 }
