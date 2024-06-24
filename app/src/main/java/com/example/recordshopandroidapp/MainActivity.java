@@ -36,11 +36,12 @@ public class MainActivity extends AppCompatActivity {
 
         MainActivityClickHandler handlers = new MainActivityClickHandler(this);
         binding.setClickHandlers(handlers);
-        // Call method to get all albums
-        getAllAlbums();
 
         // Sending hardcoded album to test POST
         mainActivityViewModel.addHardcodedAlbum();
+
+        // Call method to get all albums
+        getAllAlbums();
 
     }
 
