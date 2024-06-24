@@ -29,6 +29,8 @@ public class AlbumRepository {
 
         Call<List<Album>> call = APIservice.getAlbums();
 
+        Log.i("GET URL", call.request().url().toString());
+
         call.enqueue(new Callback<List<Album>>() {
 
             @Override
@@ -50,6 +52,7 @@ public class AlbumRepository {
         AlbumAPIService APIservice = RetrofitInstance.getService();
         Call<Album> call = APIservice.addAlbum(albumInput);
 
+        Log.i("POST URL", call.request().url().toString());
         call.enqueue(new Callback<Album>() {
             @Override
             public void onResponse(@NotNull Call<Album> call, @NotNull Response<Album> response) {
@@ -79,16 +82,17 @@ public class AlbumRepository {
 
         AlbumAPIService APIservice = RetrofitInstance.getService();
         Call<Album> call = APIservice.addAlbum(album);
+        Log.i("POST URL HARCODED ", "URL: " + call.request().url());
 
         call.enqueue(new Callback<Album>() {
             @Override
             public void onResponse(@NotNull Call<Album> call, @NotNull Response<Album> response) {
-               Log.i("AlbumRepository TEST POST", "onResponse: " + response.code());
+               Log.i("POST CALL ", "onResponse: " + response.code() + "  " + response.message() + "  " + response.body());
             }
 
             @Override
             public void onFailure(@NotNull Call<Album> call, Throwable throwable) {
-                Log.i("AlbumRepository TEST POST", "onFailure: " + throwable.getMessage());
+                Log.i("AlbumRepository TEST POST", "onFailure: " + throwable.getMessage() + " " + throwable.getLocalizedMessage());
             }
         });
 
