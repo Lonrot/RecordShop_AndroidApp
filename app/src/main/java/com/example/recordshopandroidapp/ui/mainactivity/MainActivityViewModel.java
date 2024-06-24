@@ -26,6 +26,9 @@ public class MainActivityViewModel extends AndroidViewModel {
     public void addAlbum(Album albumInput) {
         albumRepository.insertAlbum(albumInput);
     }
+    public void addHardcodedAlbum() {
+        albumRepository.sendAlbumTestAPI();
+    }
 
 
 }

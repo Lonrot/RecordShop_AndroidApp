@@ -39,6 +39,9 @@ public class MainActivity extends AppCompatActivity {
         // Call method to get all albums
         getAllAlbums();
 
+        // Sending hardcoded album to test POST
+        mainActivityViewModel.addHardcodedAlbum();
+
     }
 
     private void getAllAlbums() {
@@ -75,4 +78,6 @@ public class MainActivity extends AppCompatActivity {
         // Notify the adapter that the data set has changed
         albumAdapter.notifyDataSetChanged();
     }
+
+
 }

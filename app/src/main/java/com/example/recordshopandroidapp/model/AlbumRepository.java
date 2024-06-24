@@ -6,6 +6,8 @@ import android.widget.Toast;
 import androidx.lifecycle.MutableLiveData;
 import com.example.recordshopandroidapp.service.AlbumAPIService;
 import com.example.recordshopandroidapp.service.RetrofitInstance;
+import kotlin.reflect.KCallable;
+import org.jetbrains.annotations.NotNull;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -50,18 +52,46 @@ public class AlbumRepository {
 
         call.enqueue(new Callback<Album>() {
             @Override
-            public void onResponse(Call<Album> call, Response<Album> response) {
+            public void onResponse(@NotNull Call<Album> call, @NotNull Response<Album> response) {
                 Toast.makeText(application.getApplicationContext(),
-                        "Album Inserted", Toast.LENGTH_SHORT)
+                        "Album added successfully", Toast.LENGTH_SHORT)
                         .show();
             }
             @Override
             public void onFailure(Call<Album> call, Throwable throwable) {
                 Toast.makeText(application.getApplicationContext(),
-                        "Album Insertion failed, you failed too", Toast.LENGTH_SHORT)
+                        "Album Insertion failed, you failed too :(", Toast.LENGTH_LONG)
                         .show();
             }
         });
+    }
+
+    public void sendAlbumTestAPI() {
+        Album album = new Album();
+        album.setAlbumName("Test Album");
+        album.setAlbumArtist("Test Artist");
+        album.setAlbumReleaseYear("2024");
+        album.setAlbumGenre("Rock");
+        album.setAlbumLabel("Test label");
+        album.setAlbumPrice(10.0);
+        album.setAlbumStock(5);
+        insertAlbum(album);
+
+        AlbumAPIService APIservice = RetrofitInstance.getService();
+        Call<Album> call = APIservice.addAlbum(album);
+
+        call.enqueue(new Callback<Album>() {
+            @Override
+            public void onResponse(@NotNull Call<Album> call, @NotNull Response<Album> response) {
+               Log.i("AlbumRepository TEST POST", "onResponse: " + response.code());
+            }
+
+            @Override
+            public void onFailure(@NotNull Call<Album> call, Throwable throwable) {
+                Log.i("AlbumRepository TEST POST", "onFailure: " + throwable.getMessage());
+            }
+        });
+
     }
 }
 
