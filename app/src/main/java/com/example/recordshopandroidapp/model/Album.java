@@ -55,6 +55,7 @@ public class Album extends BaseObservable {
 
     public void setAlbumName(String albumName) {
         this.albumName = albumName;
+        notifyPropertyChanged(BR.albumName);
     }
 
     @Bindable
