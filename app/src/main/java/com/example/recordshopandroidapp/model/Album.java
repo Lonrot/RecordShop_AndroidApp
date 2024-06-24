@@ -84,7 +84,7 @@ public class Album extends BaseObservable {
     }
 
     public void setAlbumGenre(String albumGenre) {
-        this.albumGenre = albumGenre;
+        this.albumGenre = albumGenre.toUpperCase();
         notifyPropertyChanged(BR.albumGenre);
     }
 
