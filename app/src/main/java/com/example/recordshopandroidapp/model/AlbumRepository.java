@@ -17,7 +17,8 @@ import java.util.List;
 public class AlbumRepository {
 
     private MutableLiveData<List<Album>> albumsMutableLiveData = new MutableLiveData<>();
-    private Application application;
+    private MutableLiveData<Album> albumMutableLiveData = new MutableLiveData<>();
+    private final Application application;
 
 
     public AlbumRepository(Application application) {
@@ -47,7 +48,6 @@ public class AlbumRepository {
         });
         return this.albumsMutableLiveData;
     }
-
     public void insertAlbum(Album albumInput) {
         AlbumAPIService APIservice = RetrofitInstance.getService();
         Call<Album> call = APIservice.addAlbum(albumInput);
@@ -68,6 +68,44 @@ public class AlbumRepository {
             }
         });
     }
+    public void updateAlbum(long ID, Album albumInput) {
+        AlbumAPIService APIservice = RetrofitInstance.getService();
+
+        Call<Album> call =APIservice.updateAlbum(ID, albumInput);
+        Log.i("PUT CALL ", "URL: " + call.request().url());
+
+        call.enqueue(new Callback<Album>() {
+
+            @Override
+            public void onResponse(@NotNull Call<Album> call, @NotNull Response<Album> response) {
+                Toast.makeText(application.getApplicationContext(),"Album updated successfully",Toast.LENGTH_SHORT)
+                        .show();
+            }
+
+            @Override
+            public void onFailure(@NotNull Call<Album> call, Throwable throwable) {
+                Toast.makeText(application.getApplicationContext(),"Album update failed, you failed too :(", Toast.LENGTH_LONG)
+                        .show();
+                Log.e("PUT CALL ", "onFailure: " + throwable.getMessage() + " " + throwable.getLocalizedMessage());
+            }
+        });
+    }
+    public void deleteAlbum(long ID) {
+        AlbumAPIService APIservice = RetrofitInstance.getService();
+        Call<Album> call = APIservice.deleteAlbum(ID);
+
+        call.enqueue(new Callback<Album>() {
+            @Override
+            public void onResponse(@NotNull Call<Album> call, @NotNull Response<Album> response) {
+                Toast.makeText(application.getApplicationContext(),"Album deleted successfully",Toast.LENGTH_SHORT).show();
+
+            }
+            @Override
+            public void onFailure(@NotNull Call<Album> call, Throwable throwable) {
+                Toast.makeText(application.getApplicationContext(),"Album delete failed, you failed too :(", Toast.LENGTH_LONG).show();
+            }
+        });
+    }
 
     public void sendAlbumTestAPI() {
         Album album = new Album();
@@ -78,16 +116,15 @@ public class AlbumRepository {
         album.setAlbumLabel("Test label");
         album.setAlbumPrice(10.0);
         album.setAlbumStock(5);
-        insertAlbum(album);
 
         AlbumAPIService APIservice = RetrofitInstance.getService();
         Call<Album> call = APIservice.addAlbum(album);
-        Log.i("POST URL HARCODED ", "URL: " + call.request().url());
+        Log.i("POST URL HARDCODED ", "URL: " + call.request().url());
 
         call.enqueue(new Callback<Album>() {
             @Override
             public void onResponse(@NotNull Call<Album> call, @NotNull Response<Album> response) {
-               Log.i("POST CALL ", "onResponse: " + response.code() + "  " + response.message() + "  " + response.body());
+               Log.i("POST CALL ", "onResponse: " + response.code() + "  " + response.headers() + "  " + response.body());
             }
 
             @Override
@@ -95,8 +132,10 @@ public class AlbumRepository {
                 Log.i("AlbumRepository TEST POST", "onFailure: " + throwable.getMessage() + " " + throwable.getLocalizedMessage());
             }
         });
-
     }
+
+
+
 }
 
 
