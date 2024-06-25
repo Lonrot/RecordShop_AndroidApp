@@ -3,15 +3,9 @@
 
     <data>
 
-        <variable
-                name="album"
-                type="com.example.recordshopandroidapp.model.Album"/>
-
+        <variable name="album" type="com.example.recordshopandroidapp.model.Album"/>
         <import type="com.example.recordshopandroidapp.model.Converter"/>
-
-        <variable
-                name="clickHandlers"
-                type="com.example.recordshopandroidapp.ui.addalbum.AddAlbumClickHandlers"/>
+        <variable name="clickHandlers" type="com.example.recordshopandroidapp.ui.addalbum.AddAlbumClickHandlers"/>
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -20,6 +14,7 @@
                   android:layout_height="match_parent"
                   android:orientation="vertical"
                   android:gravity="center"
+                  android:background="@android:color/transparent"
                   android:padding="16dp">
 
         <androidx.cardview.widget.CardView
@@ -28,7 +23,7 @@
                 app:cardCornerRadius="12dp"
                 app:cardElevation="4dp"
                 android:padding="16dp"
-                >
+                app:cardBackgroundColor="@android:color/transparent">
 
             <LinearLayout
                     android:layout_width="match_parent"
@@ -45,8 +40,6 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:layout_marginEnd="8dp"
-
-
                             app:boxBackgroundMode="outline"
                             app:boxCornerRadiusTopStart="12dp"
                             app:boxCornerRadiusTopEnd="12dp"
@@ -56,12 +49,8 @@
                         <com.google.android.material.textfield.TextInputEditText
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-
-
                                 android:hint="Name"
-                                android:text="@={album.albumName}"
-                                />
-
+                                android:text="@={album.albumName}"/>
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -79,10 +68,8 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:hint="Artist"
-                                android:text="@={album.albumArtist}"
-                                />
+                                android:text="@={album.albumArtist}"/>
                     </com.google.android.material.textfield.TextInputLayout>
-
                 </LinearLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -99,26 +86,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="Genre"
-                            android:text="@={album.albumGenre}"
-                            />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-                        app:boxBackgroundMode="outline"
-                        app:boxCornerRadiusTopStart="12dp"
-                        app:boxCornerRadiusTopEnd="12dp"
-                        app:boxCornerRadiusBottomStart="12dp"
-                        app:boxCornerRadiusBottomEnd="12dp">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="Label"
-                            android:text="@={album.albumLabel}"
-                            />
+                            android:text="@={album.albumGenre}"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <LinearLayout
@@ -140,10 +108,8 @@
                         <com.google.android.material.textfield.TextInputEditText
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:hint="Stock"
-                                android:inputType="number"
-                                android:text="@={Converter.fromInt(album.albumStock)}"
-                                />
+                                android:hint="Label"
+                                android:text="@={album.albumLabel}"/>
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -160,13 +126,47 @@
                         <com.google.android.material.textfield.TextInputEditText
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:hint="Price"
-                                android:inputType="numberDecimal"
-                                android:text="@={Converter.fromDouble(album.albumPrice)}"
-                                />
+                                android:hint="Year"
+                                android:inputType="number"
+                                android:text="@={album.albumReleaseYear}"/>
                     </com.google.android.material.textfield.TextInputLayout>
-
                 </LinearLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        app:boxBackgroundMode="outline"
+                        app:boxCornerRadiusTopStart="12dp"
+                        app:boxCornerRadiusTopEnd="12dp"
+                        app:boxCornerRadiusBottomStart="12dp"
+                        app:boxCornerRadiusBottomEnd="12dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Stock"
+                            android:inputType="number"
+                            android:text="@={Converter.fromInt(album.albumStock)}"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        app:boxBackgroundMode="outline"
+                        app:boxCornerRadiusTopStart="12dp"
+                        app:boxCornerRadiusTopEnd="12dp"
+                        app:boxCornerRadiusBottomStart="12dp"
+                        app:boxCornerRadiusBottomEnd="12dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Price"
+                            android:inputType="numberDecimal"
+                            android:text="@={Converter.fromDouble(album.albumPrice)}"/>
+                </com.google.android.material.textfield.TextInputLayout>
 
                 <LinearLayout
                         android:layout_width="match_parent"
@@ -186,10 +186,8 @@
                             android:id="@+id/btn_save"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-
                             android:text="Save"
                             android:onClick="@{clickHandlers::onAddAlbumClick}"
-
                             android:layout_marginStart="8dp"/>
 
                 </LinearLayout>
