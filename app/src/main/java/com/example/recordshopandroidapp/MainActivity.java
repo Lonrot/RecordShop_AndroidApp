@@ -38,15 +38,17 @@ public class MainActivity extends AppCompatActivity {
         binding.setClickHandlers(handlers);
 
         // Sending hardcoded album to test POST
-        mainActivityViewModel.addHardcodedAlbum();
+       // mainActivityViewModel.addHardcodedAlbum();
 
         // Call method to get all albums
         getAllAlbums();
+
 
     }
 
     private void getAllAlbums() {
         mainActivityViewModel.getAlbums().observe(this, new Observer<List<Album>>() {
+
             @Override
             public void onChanged(List<Album> albumsFromLiveData) {
                 // albums refers to the variable name of your List of Album objects
